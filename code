@@ -1,0 +1,170 @@
+//
+//  main.cpp
+//  Assignment 10
+//
+//  Created by Darya Filipchyk on 4/29/21.
+//
+
+#include <iostream>
+using namespace std;
+
+class Automobile{
+protected:
+    string make;
+    string model;
+    int mileage;
+    double price;
+public:
+    Automobile(){
+        make="";
+        model="";
+        mileage=0;
+        price=0.0;
+        
+    }
+    //setters
+    void setMake(string ma1){
+        make=ma1;
+    }
+    void setModel(string mo1){
+        model=mo1;
+    }
+    void setMileage(int mi1){
+        mileage=mi1;
+    }
+    void setPrice(double p1){
+        price=p1;
+        
+    }
+    //getters
+    string getMake(){
+        return make;
+    }
+    string getModel(){
+        return model;
+    }
+    int getMileage(){
+        return mileage;
+    }
+    double getPrice(){
+        return price;
+    }
+    //pure virtual functions
+    virtual void print()=0;
+    
+    //sameName function
+    bool sameMake(Automobile *automobile){
+        if (automobile->getMake()==make)
+            return true;
+        else
+            return false;
+    }
+};
+
+class Car:public Automobile{
+    public:
+    //default constractor
+    Car(){
+        make="";
+        model="";
+        mileage=0;
+        price=0.0;
+    }
+    //second constructor
+    Car (string ma, string mo, int mi, double p){
+        make=ma;
+        model=mo;
+        mileage=mi;
+        price=p;
+    }
+    //redefine the function print()
+    void print(){
+        cout<<"This automobile is a car:"<<endl;
+        cout<<"Make: "<<make<<endl;
+        cout<<"Model: "<<model<<endl;
+        cout<<"Mileage: "<<mileage<<endl;
+        cout<<"Price: $"<<price<<endl;
+    }
+};
+
+class Truck:public Automobile{
+    public:
+    //default constractor
+    Truck(){
+        make="";
+        model="";
+        mileage=0;
+        price=0.0;
+    }
+    //second constructor
+    Truck (string ma, string mo, int mi, double p){
+        make=ma;
+        model=mo;
+        mileage=mi;
+        price=p;
+    }
+    //redefine the function print()
+    void print(){
+        cout<<"This automobile is a truck:"<<endl;
+        cout<<"Make: "<<make<<endl;
+        cout<<"Model: "<<model<<endl;
+        cout<<"Mileage: "<<mileage<<endl;
+        cout<<"Price: $"<<price<<endl;
+    }
+};
+
+
+
+int main() {
+    
+
+    Car c1;
+    c1.setMake("Toyota");
+    c1.setModel("Camry");
+    c1.setMileage(5600);
+    c1.setPrice(19450.00);
+    cout<<"Car make: "<<c1.getMake()<<endl;
+    cout<<"Car model: "<<c1.getModel()<<endl;
+    cout<<"Car mileage: "<<c1.getMileage()<<endl;
+    cout<<"Car price: "<<c1.getPrice()<<endl;
+    
+    c1.print();
+    
+    Car c2("Honda", "Accord", 12564, 15700.0);
+    cout<<"Default make: "<<c2.getMake()<<endl;
+    cout<<"Default model: "<<c2.getModel()<<endl;
+    cout<<"Default mileage: "<<c2.getMileage()<<endl;
+    cout<<"Default price: "<<c2.getPrice()<<endl;
+
+    cout<<"Car make: "<<c2.getMake()<<endl;
+    cout<<"Car model: "<<c2.getModel()<<endl;
+    cout<<"Car mileage: "<<c2.getMileage()<<endl;
+    cout<<"Car price: "<<c2.getPrice()<<endl;
+   
+
+    
+    Truck t1("Ford", "F150", 3468, 48900.0);
+    cout<<"Default make: "<<t1.getMake()<<endl;
+    cout<<"Default model: "<<t1.getModel()<<endl;
+    cout<<"Default mileage: "<<t1.getMileage()<<endl;
+    cout<<"Default price: "<<t1.getPrice()<<endl;
+
+    cout<<"Truck make: "<<t1.getMake()<<endl;
+    cout<<"Truck model: "<<t1.getModel()<<endl;
+    cout<<"Truck mileage: "<<t1.getMileage()<<endl;
+    cout<<"Truck price: "<<t1.getPrice()<<endl;
+   
+    Truck t2;
+    t2.setMake("Toyota");
+    t2.setModel("Tundra");
+    t2.setMileage(34009);
+    t2.setPrice(23850.0);
+    cout<<"Truck make: "<<t2.getMake()<<endl;
+    cout<<"Truck model: "<<t2.getModel()<<endl;
+    cout<<"Truck mileage: "<<t2.getMileage()<<endl;
+    cout<<"Truck price: "<<t2.getPrice()<<endl;
+    
+
+    
+    return 0;
+}
